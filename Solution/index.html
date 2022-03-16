@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>CENCOSUD International - CENCOSUD International Project</title>
+  <title>Topologies - CENCOSUD International Project</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "CENCOSUD International";
+    var mkdocs_page_name = "Topologies";
     var mkdocs_page_input_path = "Solution.md";
     var mkdocs_page_url = null;
   </script>
@@ -55,8 +55,28 @@
                     <li class="toctree-l1"><a class="reference internal" href="../topologies/">Topologies</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Topologies</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#application-aware-routing">Application Aware Routing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#forward-error-correction-fec">Forward Error Correction (FEC)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#packet-duplication-for-noisy-channels">Packet Duplication for Noisy Channels</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#qos">QoS</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cencosud-physical-topology">CENCOSUD Physical Topology</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cencosud-sd-wan-topology">CENCOSUD SD-WAN Topology</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cencosud-sd-wan-topology-path-preference">CENCOSUD SD-WAN Topology - Path Preference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cencosud-sd-wan-topology_1">CENCOSUD SD-WAN Topology</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cencosud-sd-wan-topology_2">CENCOSUD SD-WAN Topology</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
       </div>
@@ -80,7 +100,7 @@
     
       
     
-    <li>CENCOSUD International</li>
+    <li>Topologies</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,25 +111,65 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="cencosud-international">CENCOSUD International</h1>
-<p>Currently CENCOSUD has an International network that interconnect 5 countries:</p>
+                <h1 id="sd-wan-cencosud-international">SD-WAN CENCOSUD International</h1>
+<p>Cisco SD-WAN Viptela is the solution suggested to help CENCOSUD to move your network to a digital transformation</p>
+<p>With SD-WAN Viptela we will be able to address network requirements and enable new features like:</p>
 <ol>
-<li>Argentina</li>
-<li>Chile</li>
-<li>Brasil</li>
-<li>Colombia</li>
-<li>Peru</li>
+<li>Application Aware Routing</li>
+<li>Forward Error Correction</li>
+<li>Packet Duplication</li>
+<li>QoS</li>
+<li>Routing</li>
+<li>Any Transport</li>
 </ol>
+<h2 id="application-aware-routing">Application Aware Routing</h2>
+<p>Application-aware routing tracks network and path characteristics of the data plane tunnels between Cisco IOS XE SD-WAN devices and uses the collected information to compute optimal paths for data traffic. These characteristics include packet loss, latency, and jitter, and the load, cost and bandwidth of a link. The ability to consider factors in path selection other than those used by standard routing protocols—such as route prefixes, metrics, link-state information, and route removal on the Cisco IOS XE SD-WAN device—offers a number of advantages to an enterprise:</p>
+<p>In normal network operation, the path taken by application data traffic through the network can be optimized, by directing it to WAN links that support the required levels of packet loss, latency, and jitter defined in an application’s SLA.</p>
+<p>In the face of network brownouts or soft failures, performance degradation can be minimized. The tracking of network and path conditions by application-aware routing in real time can quickly reveal performance issues, and it automatically activates strategies that redirect data traffic to the best available path. As the network recovers from the soft failure conditions, application-aware routing automatically readjusts the data traffic paths.</p>
+<p>Network costs can be reduced because data traffic can be more efficiently load-balanced.</p>
+<p>Reference
+https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/policies/ios-xe-17/policies-book-xe/application-aware-touting.html</p>
+<h2 id="forward-error-correction-fec">Forward Error Correction (FEC)</h2>
+<p>Forward Error Correction (FEC) is a mechanism to recover lost packets on a link by sending extra “parity” packets for every group (N) of packets. As long as the receiver receives a subset of packets in the group (at-least N-1) and the parity packet, up to a single lost packet in the group can be recovered. FEC is supported on Cisco IOS XE SD-WAN devices.</p>
+<p>Reference
+https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/policies/ios-xe-17/policies-book-xe/forward-error-correction.html</p>
+<h2 id="packet-duplication-for-noisy-channels">Packet Duplication for Noisy Channels</h2>
+<p>Cisco IOS XE SD-WAN devices use packet duplication to overcome packet loss.</p>
+<p>Packet duplication sends copies of packets on alternate available paths to reach Cisco IOS XE SD-WAN devices. If one of the packets is lost, a copy of the packet is forwarded to the server. Receiving Cisco IOS XE SD-WAN devices discard copies of the packet and forward one packet to the server.</p>
+<p>Packet duplication is suitable for edges with multiple access links. Once packet duplication is configured and pushed to your device, you can see the tunnel packet duplication statistics.</p>
+<p>https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/policies/ios-xe-17/policies-book-xe/packet-duplication.html</p>
+<h2 id="qos">QoS</h2>
+<p>Forwarding takes the data packet and sends it over the transport to the remote side, specifying what to do with the packet. It specifies the interface through which packets are sent to reach the service side of a remote router.</p>
+<p>Once the control plane connections of the Cisco SD-WAN overlay network are up and running, data traffic flows automatically over the IPsec connections between the routers. Because data traffic never goes to or through the centralized vSmart controller, forwarding only occurs between the Cisco IOS XE SD-WAN devices as they send and receive data traffic.</p>
+<p>While the routing protocols running in the control plane provide a router the best route to reach the network that is on the service side of a remote router, there will be situations where it is beneficial to select more specific routes. Using forwarding, there are ways you can affect the flow of data traffic. Forwarding takes the data packet and sends it over the transport to the remote side, specifying what to do with the packet. It specifies the interface through which packets are sent to reach the service side of a remote router.</p>
+<p>To modify the default data packet forwarding flow, you create and apply a centralized data policy or a localized data policy. With a centralized data policy, you can manage the paths along which traffic is routed through the network, and you can permit or block traffic based on the address, port, and DSCP fields in the packet's IP header. With a localized data policy, you can control the flow of data traffic into and out of the interfaces of a router, enabling features such as quality of service (QoS).</p>
+<p>https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/qos/ios-xe-17/qos-book-xe/forwarding-qos.html</p>
 <h2 id="cencosud-physical-topology">CENCOSUD Physical Topology</h2>
 <p>The diagram bellow represent the CENCOSUD physical connections between all countries,</p>
 <p><img alt="DC Topology" src="/TSA/images/dc_physical.jpeg" /></p>
-<h2 id="cencosud-physical-topology_1">CENCOSUD Physical Topology</h2>
+<h2 id="cencosud-sd-wan-topology">CENCOSUD SD-WAN Topology</h2>
+<p><img alt="DC Topology" src="/TSA/images/dc.jpeg" /></p>
+<p>The diagram bellow represent the CENCOSUD MPLS VPN Topology that CENCOSUD use to interconnect sites.</p>
+<h2 id="cencosud-sd-wan-topology-path-preference">CENCOSUD SD-WAN Topology - Path Preference</h2>
+<p><img alt="DC Topology" src="/TSA/images/dc.jpeg" /></p>
+<p>The diagram bellow represent the CENCOSUD MPLS VPN Topology that CENCOSUD use to interconnect sites.</p>
+<h2 id="cencosud-sd-wan-topology_1">CENCOSUD SD-WAN Topology</h2>
+<p><img alt="DC Topology" src="/TSA/images/dc.jpeg" /></p>
+<p>The diagram bellow represent the CENCOSUD MPLS VPN Topology that CENCOSUD use to interconnect sites.</p>
+<h2 id="cencosud-sd-wan-topology_2">CENCOSUD SD-WAN Topology</h2>
 <p><img alt="DC Topology" src="/TSA/images/dc.jpeg" /></p>
 <p>The diagram bellow represent the CENCOSUD MPLS VPN Topology that CENCOSUD use to interconnect sites.</p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../topologies/" class="btn btn-neutral" title="Topologies"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -132,6 +192,8 @@
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+      
+        <span><a href="../topologies/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
