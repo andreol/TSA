@@ -66,6 +66,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#qos">QoS</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sd-wan-routing">SD-WAN Routing</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#cencosud-physical-topology">CENCOSUD Physical Topology</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#cencosud-sd-wan-topology">CENCOSUD SD-WAN Topology</a>
@@ -119,7 +121,7 @@
 <li>Forward Error Correction</li>
 <li>Packet Duplication</li>
 <li>QoS</li>
-<li>Routing</li>
+<li>SD-WAN Routing</li>
 <li>Any Transport</li>
 </ol>
 <h2 id="application-aware-routing">Application Aware Routing</h2>
@@ -144,6 +146,12 @@ https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/policies/ios-x
 <p>While the routing protocols running in the control plane provide a router the best route to reach the network that is on the service side of a remote router, there will be situations where it is beneficial to select more specific routes. Using forwarding, there are ways you can affect the flow of data traffic. Forwarding takes the data packet and sends it over the transport to the remote side, specifying what to do with the packet. It specifies the interface through which packets are sent to reach the service side of a remote router.</p>
 <p>To modify the default data packet forwarding flow, you create and apply a centralized data policy or a localized data policy. With a centralized data policy, you can manage the paths along which traffic is routed through the network, and you can permit or block traffic based on the address, port, and DSCP fields in the packet's IP header. With a localized data policy, you can control the flow of data traffic into and out of the interfaces of a router, enabling features such as quality of service (QoS).</p>
 <p>https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/qos/ios-xe-17/qos-book-xe/forwarding-qos.html</p>
+<h2 id="sd-wan-routing">SD-WAN Routing</h2>
+<p>Underlay vs Overlay Routing</p>
+<p>The Cisco SD-WAN network is divided into the two distinct parts: the underlay and overlay network. The underlay network is the physical network infrastructure which connects network devices such as routers and switches together and routes traffic between devices using traditional routing mechanisms. In the SD-WAN network, this is typically made up of the connections from the WAN Edge router to the transport network and the transport network itself. The network ports that connect to the underlay network are part of VPN 0, the transport VPN. Getting connectivity to the Service Provider gateway in the transport network usually involves configuring a static default gateway (most common), or by configuring a dynamic routing protocol, such as BGP or OSPF. These routing processes for the underlay network are confined to VPN 0 and their primary purpose is for reachability to TLOCs on other WAN Edge routers so that IPsec tunnels can be built to form the overlay network.</p>
+<p>The IPsec tunnels which traverse from site-to-site using the underlay network help to form the SD-WAN overlay network. The Overlay Management Protocol (OMP), a TCP-based protocol similar to BGP, provides the routing for the overlay network. The protocol runs between vSmart controllers and WAN Edge routers where control plane information is exchanged over secure DTLS or TLS connections. The vSmart controller acts a lot like a route reflector; it receives routes from WAN Edge routers, processes and applies any policy to them, and then advertises the routes to other WAN Edge routers in the overlay network.</p>
+<p>Reference
+https://www.cisco.com/c/en/us/td/docs/solutions/CVD/SDWAN/cisco-sdwan-design-guide.html#SDWANRouting</p>
 <h2 id="cencosud-physical-topology">CENCOSUD Physical Topology</h2>
 <p>The diagram bellow represent the CENCOSUD physical connections between all countries,</p>
 <p><img alt="DC Topology" src="/TSA/images/dc_physical.jpeg" /></p>
